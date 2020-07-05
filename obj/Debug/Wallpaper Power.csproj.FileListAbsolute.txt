@@ -1,0 +1,13 @@
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\bin\Debug\Wallpaper Power.exe
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\bin\Debug\Wallpaper Power.pdb
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Debug\Wallpaper Power.csprojAssemblyReference.cache
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Debug\Wallpaper_Power.Form1.resources
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Debug\Wallpaper_Power.Properties.Resources.resources
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Debug\Wallpaper Power.csproj.GenerateResource.cache
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Debug\Wallpaper Power.exe
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Debug\Wallpaper Power.pdb
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\bin\Debug\Wallpaper Power.exe.config
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Debug\Wallpaper Power.csproj.CoreCompileInputs.cache
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Debug\Wallpaper Power.csproj.CopyComplete
