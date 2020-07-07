@@ -1,4 +1,3 @@
-C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Release\Wallpaper Power.csprojAssemblyReference.cache
 C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Release\Wallpaper_Power.Form1.resources
 C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Release\Wallpaper_Power.Properties.Resources.resources
 C:\Users\ddhello\source\repos\Wallpaper Power\Wallpaper Power\obj\Release\Wallpaper Power.csproj.GenerateResource.cache

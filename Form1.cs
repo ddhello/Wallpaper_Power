@@ -2,8 +2,10 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -13,6 +15,7 @@ namespace Wallpaper_Power
 {
     public partial class Form1 : Form
     {
+        bool downloaded = false;
         string url = "";
         string er1 = "https://api.ixiaowai.cn/api/api.php";
         string er2 = "http://api.btstu.cn/sjbz/?lx=dongman";
@@ -166,6 +169,10 @@ namespace Wallpaper_Power
             try
             {
                 timer1.Interval = Convert.ToInt16(textBox1.Text) * 1000;
+                if (comboBox1.SelectedItem.ToString() == "360动漫壁纸") {
+                    timer2.Interval = Convert.ToInt16(textBox1.Text) * 1000 / 2;
+                    timer2.Enabled = true;
+                }
             }
             catch
             {
@@ -175,28 +182,61 @@ namespace Wallpaper_Power
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if(comboBox1.SelectedItem.ToString() == "360动漫壁纸") {
+                button2.Enabled = false;
+                return; }
             change();
+        }
+        void down() {
+            if (downloaded == true) return;
+            string url = "http://wallpaper.apc.360.cn/index.php?c=WallPaperAndroid&a=getAppsByCategory&cid=26&start=0&count=99";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "HEAD";
+            request.AllowAutoRedirect = false;
+            HttpWebResponse myResp = (HttpWebResponse)request.GetResponse();
+            if (myResp.StatusCode == HttpStatusCode.Redirect)
+            { url = myResp.GetResponseHeader("Location"); }
+            WebClient webclient = new WebClient();
+            string json = webclient.DownloadString(url);
+            JObject jo = (JObject)JsonConvert.DeserializeObject(json);
+            JArray ja = JArray.Parse(jo["data"].ToString());
+            string[] urls = new string[99];
+            for (int count = 0; count <= ja.Count - 1; count++)
+            {
+                JObject jb = JObject.Parse(ja[count].ToString());
+                urls[count] = jb["url"].ToString();
+            }
+            for (int b = 0; b < 10; b++)
+            {
+                for (int count = 0; count < 98; count++)
+                {
+                    WebClient wb = new WebClient();
+                    Random rand = new Random();
+                    int a = rand.Next();
+                    Uri uri = new Uri(urls[count]);
+                    wb.DownloadFileAsync(uri, Application.StartupPath + @"\img\360\" + a.ToString() + ".jpg");
+                }
+            }
+            downloaded = true;
         }
         void change()
         {
             if (comboBox1.SelectedItem.ToString() == "360动漫壁纸")
             {
-                string url = "http://wallpaper.apc.360.cn/index.php?c=WallPaperAndroid&a=getAppsByCategory&cid=26&start=0&count=99";
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.Method = "HEAD";
-                request.AllowAutoRedirect = false;
-                HttpWebResponse myResp = (HttpWebResponse)request.GetResponse();
-                if (myResp.StatusCode == HttpStatusCode.Redirect)
-                { url = myResp.GetResponseHeader("Location"); }
-                WebClient webclient = new WebClient();
-                string json = webclient.DownloadString(url);
-                JObject jo = (JObject)JsonConvert.DeserializeObject(json);
-                string[] results = new string[99];
-                for (int a = 0; a <= 98; a++)
-                {
-                    results[a] = jo["Next"]["data"].ToString();
+                ArrayList pics = new ArrayList();
+                DirectoryInfo TheFolder = new DirectoryInfo(Application.StartupPath+@"\img\360");
+                int a = 0;
+                foreach (FileInfo NextFile in TheFolder.GetFiles()) {
+                    pics.Add(NextFile.Name);
                 }
-
+                Random rand = new Random();
+                int random = rand.Next(0, pics.Count);
+                var ads = shlobj.GetActiveDesktop();
+                ads.SetWallpaper(Application.StartupPath+@"\img\360\"+pics[random], 0);
+                string temp = Application.StartupPath + @"\img\360\" + pics[random];
+                ads.ApplyChanges(AD_Apply.ALL | AD_Apply.FORCE | AD_Apply.BUFFERED_REFRESH);
+                Marshal.ReleaseComObject(ads);
+                return;
             }
             switch (comboBox1.SelectedItem.ToString())
             {
@@ -305,6 +345,11 @@ namespace Wallpaper_Power
         private void button3_Click(object sender, EventArgs e)
         {
             MessageBox.Show(this, "由于服务器限制，自动预载图片仅能在壁纸源选择360后使用\n注意：使用360壁纸动漫后可能会出现小猪佩奇等其他奇怪东西！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            down();
         }
     }
     public class Data

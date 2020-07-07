@@ -48,6 +48,7 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -56,9 +57,9 @@
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(446, 21);
+            this.label1.Size = new System.Drawing.Size(244, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "欢迎使用WallPaper Power 1.0.0(界面就先这样罢，懒得搞了)";
+            this.label1.Text = "欢迎使用WallPaper Power 1.2.0";
             // 
             // label2
             // 
@@ -224,11 +225,15 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 185);
+            this.ClientSize = new System.Drawing.Size(488, 177);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.label8);
@@ -246,7 +251,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "WallPaper Power 1.0.0";
+            this.Text = "WallPaper Power 1.2.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.ResumeLayout(false);
@@ -274,6 +279,7 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
